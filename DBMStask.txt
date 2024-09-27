@@ -1,0 +1,655 @@
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| devops             |
+| employee           |
+| employeee          |
+| employeetable      |
+| information_schema |
+| mysql              |
+| performance_schema |
+| session            |
+| sys                |
+| teju               |
++--------------------+
+10 rows in set (0.06 sec)
+
+mysql> CREATE TABLE Employeee (    empNo INT PRIMARY KEY,    ename VARCHAR(50),    mgrNo INT,    deptNo INT,    hiredate DATE);
+ERROR 1046 (3D000): No database selected
+mysql> CREATE TABLE Employeee;
+ERROR 1046 (3D000): No database selected
+mysql> USE mydatabase;
+ERROR 1049 (42000): Unknown database 'mydatabase'
+mysql> USE mydatabase;
+ERROR 1049 (42000): Unknown database 'mydatabase'
+mysql> CREATE TABLE Employeee (    empNo INT PRIMARY KEY,    ename VARCHAR(50),    mgrNo INT,    deptNo INT,    hiredate DATE);
+ERROR 1046 (3D000): No database selected
+mysql> select *from Employeee;
+ERROR 1046 (3D000): No database selected
+mysql> USE MYDATABASE;
+ERROR 1049 (42000): Unknown database 'mydatabase'
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| devops             |
+| employee           |
+| employeee          |
+| employeetable      |
+| information_schema |
+| mysql              |
+| performance_schema |
+| session            |
+| sys                |
+| teju               |
++--------------------+
+10 rows in set (0.00 sec)
+
+mysql> USE mydatabases;
+ERROR 1049 (42000): Unknown database 'mydatabases'
+mysql> USE Employeee;
+Database changed
+mysql> CREATE TABLE Employeee (    empNo INT PRIMARY KEY,    ename VARCHAR(50),    mgrNo INT,    deptNo INT,    hiredate DATE);
+Query OK, 0 rows affected (1.01 sec)
+
+mysql> INSERT INTO Employee (empNo, ename, mgrNo, deptNo, hiredate)VALUES (68, 'Goldic', 4, 4, '2011-12-14');
+ERROR 1146 (42S02): Table 'employeee.employee' doesn't exist
+mysql> INSERT INTO Employeee (empNo, ename, mgrNo, deptNo, hiredate)VALUES (68, 'Goldic', 4, 4, '2011-12-14');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> SHOW TABLES:
+    -> ^C
+mysql> SHOW TABLES;
++---------------------+
+| Tables_in_employeee |
++---------------------+
+| employeee           |
++---------------------+
+1 row in set (0.05 sec)
+
+mysql> select *From Employeee;
++-------+--------+-------+--------+------------+
+| empNo | ename  | mgrNo | deptNo | hiredate   |
++-------+--------+-------+--------+------------+
+|    68 | Goldic |     4 |      4 | 2011-12-14 |
++-------+--------+-------+--------+------------+
+1 row in set (0.00 sec)
+
+mysql> delete database Employeee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database Employeee' at line 1
+mysql> DROP DATABASE Employeee;
+Query OK, 1 row affected (0.46 sec)
+
+mysql> create database Org;
+Query OK, 1 row affected (0.08 sec)
+
+mysql> USE Org;
+Database changed
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| devops             |
+| employee           |
+| employeetable      |
+| information_schema |
+| mysql              |
+| org                |
+| performance_schema |
+| session            |
+| sys                |
+| teju               |
++--------------------+
+10 rows in set (0.00 sec)
+
+mysql> CREATE TABLE Location( lCode INT(3) PRIMARY KEY, lName VARCHAR(35) NOT NULL);
+Query OK, 0 rows affected, 1 warning (0.42 sec)
+
+mysql> Insert into location values(122,’Chicago’); Insert into location values(123,’Atlanta’); Insert into location values(124,’NewYark’); Insert into location values(167,’Paris’);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?Chicago?)' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?Atlanta?)' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?NewYark?)' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?Paris?)' at line 1
+mysql> Insert into location values(122,’Chicago’);^Cs(124,’NewYark’); Insert into location values(167,’Paris’);
+mysql> Insert into location values(122,’Chicago’);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?Chicago?)' at line 1
+mysql> Insert into location values(122,'Chicago');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> Insert into location values(123,'Atlanta');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> Insert into location values(124,'NewYark');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> Insert into location values(167,'Paris');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select *From Location;
++-------+---------+
+| lCode | lName   |
++-------+---------+
+|   122 | Chicago |
+|   123 | Atlanta |
+|   124 | NewYark |
+|   167 | Paris   |
++-------+---------+
+4 rows in set (0.00 sec)
+
+mysql> CREATE TABLE Job( JCode INT(3) PRIMARY KEY, JName VARCHAR(35) NOT NULL);
+Query OK, 0 rows affected, 1 warning (0.64 sec)
+
+mysql> Insert into job values(666,’Clerk’); Insert into job values(667,’Trainee’); Insert into job values(668,’Analyst’); Insert into job values(669,’SalesPerson’); Insert into job values(670,’Manager’^C Insert into job values(671,'President');
+mysql> Insert into job values(666,'Clerk');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> Insert into job values(667,'Trainee');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> Insert into job values(668,'Analyst');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> Insert into job values(669,'SalesPerson');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> Insert into job values(670,'Manager');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> Insert into job values(671,'President');
+Query OK, 1 row affected (0.07 sec)
+
+mysql>  select *From job;
++-------+-------------+
+| JCode | JName       |
++-------+-------------+
+|   666 | Clerk       |
+|   667 | Trainee     |
+|   668 | Analyst     |
+|   669 | SalesPerson |
+|   670 | Manager     |
+|   671 | President   |
++-------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> CREATE TABLE Department (
+    ->     DeptNo INT(3) PRIMARY KEY,
+    ->     DName VARCHAR(35),
+    ->     LCode INT(3),
+    ->     FOREIGN KEY (LCode) REFERENCES Location(lCode)
+    -> );
+Query OK, 0 rows affected, 2 warnings (1.54 sec)
+
+mysql> INSERT INTO Department (DeptNo, DName, LCode) VALUES (10, 'Accounting', 122);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> INSERT INTO Department (DeptNo, DName, LCode) VALUES (20, 'Research', 124);
+Query OK, 1 row affected (0.19 sec)
+
+mysql> INSERT INTO Department (DeptNo, DName, LCode) VALUES (30, 'Sales', 123);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> INSERT INTO Department (DeptNo, DName, LCode) VALUES (40, 'Operations', 167);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> INSERT INTO Department (DeptNo, DName, LCode) VALUES (22, 'Finance', 122);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> INSERT INTO Department (DeptNo, DName, LCode) VALUES (23, 'Sales', 122);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> INSERT INTO Department (DeptNo, DName, LCode) VALUES (24, 'HR', 122);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> select *From Department;
++--------+------------+-------+
+| DeptNo | DName      | LCode |
++--------+------------+-------+
+|     10 | Accounting |   122 |
+|     20 | Research   |   124 |
+|     22 | Finance    |   122 |
+|     23 | Sales      |   122 |
+|     24 | HR         |   122 |
+|     30 | Sales      |   123 |
+|     40 | Operations |   167 |
++--------+------------+-------+
+7 rows in set (0.00 sec)
+
+mysql> CREATE TABLE Employee (
+    ->     EmpNo INT(3) PRIMARY KEY,           -- Employee number
+    ->     EName VARCHAR(35) NOT NULL,         -- Employee name
+    ->     jCode INT(3),                       -- Job code, foreign key
+    ->     MgrNo INT(3),                       -- Manager number, self-referencing foreign key
+    ->     HireDate DATE,                     -- Hire date
+    ->     Salary INT(10),                    -- Salary
+    ->     Commission FLOAT(11,2),            -- Commission
+    ->     DeptNo INT(3),                     -- Department number, foreign key
+    ->     FOREIGN KEY (jCode) REFERENCES job(jCode),
+    ->     FOREIGN KEY (MgrNo) REFERENCES Employee(EmpNo),
+    ->     FOREIGN KEY (DeptNo) REFERENCES Department(DeptNo)
+    -> );
+Query OK, 0 rows affected, 6 warnings (1.21 sec)
+
+mysql> INSERT INTO Employee (EmpNo, EName, jCode, MgrNo, HireDate, Salary, Commission, DeptNo) VALUES
+    -> (1, 'venkat', 672, NULL, '2006-02-01', 1200000, 10000, 40),
+    -> (2, 'Nirmala', 671, 1, '2007-04-02', 800000, 50000, 20),
+    -> (3, 'Pradeep', 669, 1, '2005-10-10', 1000000, NULL, 40),
+    -> (4, 'Srinivas', 669, 1, '2005-05-08', 1000000, NULL, 30),
+    -> (5, 'Krishna', 668, 2, '2005-10-09', 500000, 20000, 22),
+    -> (6, 'Deepa', 668, 3, '2007-09-09', 600000, NULL, 23),
+    -> (7, 'Keerthi', 668, 4, '2006-06-05', 600000, NULL, 24);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`org`.`employee`, CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`jCode`) REFERENCES `job` (`JCode`))
+mysql> (3, 'Pradeep', 669, 1, '2005-10-10', 1000000, NULL, 40),
+    -> mysql> CREATE TABLE Job( JCode INT(3) PRIMARY KEY, JName VARCHAR(35) NOT NULL);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '3, 'Pradeep', 669, 1, '2005-10-10', 1000000, NULL, 40),
+mysql> CREATE TABLE Job(' at line 1
+mysql> Query OK, 0 rows affected, 1 warning (0.64 sec)
+    ->
+    -> mysql> Insert into job values(666,’Clerk’); Insert into job values(667,’Trainee’); Insert into job values(668,’Analyst’); Insert into job values(669,’SalesPerson’); Insert into job values(670,’Manager’^C Insert into job values(671,'President');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 0 rows affected, 1 warning (0.64 sec)
+
+mysql> Insert into job values(6' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?Trainee?)' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?Analyst?)' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?SalesPerson?)' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?Manager?^C Insert into job values(671,'President')' at line 1
+mysql> mysql> Insert into job values(666,'Clerk');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mysql> Insert into job values(666,'Clerk')' at line 1
+mysql> Query OK, 1 row affected (0.06 sec)
+    ->
+    -> mysql> Insert into job values(667,'Trainee');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 1 row affected (0.06 sec)
+
+mysql> Insert into job values(667,'Trainee'' at line 1
+mysql> Query OK, 1 row affected (0.06 sec)
+    ->
+    -> mysql> Insert into job values(668,'Analyst');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 1 row affected (0.06 sec)
+
+mysql> Insert into job values(668,'Analyst'' at line 1
+mysql> Query OK, 1 row affected (0.04 sec)
+    ->
+    -> mysql> Insert into job values(669,'SalesPerson');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 1 row affected (0.04 sec)
+
+mysql> Insert into job values(669,'SalesPer' at line 1
+mysql> Query OK, 1 row affected (0.06 sec)
+    ->
+    -> mysql> Insert into job values(670,'Manager');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 1 row affected (0.06 sec)
+
+mysql> Insert into job values(670,'Manager'' at line 1
+mysql> Query OK, 1 row affected (0.04 sec)
+    ->
+    -> mysql> Insert into job values(671,'President');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 1 row affected (0.04 sec)
+
+mysql> Insert into job values(671,'Presiden' at line 1
+mysql> Query OK, 1 row affected (0.07 sec)
+    ->
+    -> mysql>  select *From job;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 1 row affected (0.07 sec)
+
+mysql>  select *From job' at line 1
+mysql> +-------+-------------+
+    -> | JCode | JName       |
+    -> +-------+-------------+
+    -> |   666 | Clerk       |
+    -> |   667 | Trainee     |
+    -> |   668 | Analyst     |
+    -> |   669 | SalesPerson |
+    -> |   670 | Manager     |
+    -> |   671 | President   |
+    -> +-------+-------------+
+    -> 6 rows in set (0.00 sec)
+    ->
+    -> mysql> CREATE TABLE Department (
+    ->     ->     DeptNo INT(3) PRIMARY KEY,
+    ->     ->     DName VARCHAR(35),
+    ->     ->     LCode INT(3),
+    ->     ->     FOREIGN KEY (LCode) REFERENCES Location(lCode)
+    ->     -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '+-------+-------------+
+| JCode | JName       |
++-------+-------------+
+|   666 ' at line 1
+mysql> Query OK, 0 rows affected, 2 warnings (1.54 sec)
+    ->
+    -> mysql> INSERT INTO Department (DeptNo, DName, LCode) VALUES (10, 'Accounting', 122);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 0 rows affected, 2 warnings (1.54 sec)
+
+mysql> INSERT INTO Department ' at line 1
+mysql> Query OK, 1 row affected (0.10 sec)
+    ->
+    -> mysql> INSERT INTO Department (DeptNo, DName, LCode) VALUES (20, 'Research', 124);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 1 row affected (0.10 sec)
+
+mysql> INSERT INTO Department (DeptNo, DNam' at line 1
+mysql> Query OK, 1 row affected (0.19 sec)
+    ->
+    -> mysql> INSERT INTO Department (DeptNo, DName, LCode) VALUES (30, 'Sales', 123);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 1 row affected (0.19 sec)
+
+mysql> INSERT INTO Department (DeptNo, DNam' at line 1
+mysql> Query OK, 1 row affected (0.13 sec)
+    ->
+    -> mysql> INSERT INTO Department (DeptNo, DName, LCode) VALUES (40, 'Operations', 167);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 1 row affected (0.13 sec)
+
+mysql> INSERT INTO Department (DeptNo, DNam' at line 1
+mysql> Query OK, 1 row affected (0.12 sec)
+    ->
+    -> mysql> INSERT INTO Department (DeptNo, DName, LCode) VALUES (22, 'Finance', 122);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 1 row affected (0.12 sec)
+
+mysql> INSERT INTO Department (DeptNo, DNam' at line 1
+mysql> Query OK, 1 row affected (0.13 sec)
+    ->
+    -> mysql> INSERT INTO Department (DeptNo, DName, LCode) VALUES (23, 'Sales', 122);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 1 row affected (0.13 sec)
+
+mysql> INSERT INTO Department (DeptNo, DNam' at line 1
+mysql> Query OK, 1 row affected (0.11 sec)
+    ->
+    -> mysql> INSERT INTO Department (DeptNo, DName, LCode) VALUES (24, 'HR', 122);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 1 row affected (0.11 sec)
+
+mysql> INSERT INTO Department (DeptNo, DNam' at line 1
+mysql> Query OK, 1 row affected (0.13 sec)
+    ->
+    -> mysql> select *From Department;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 1 row affected (0.13 sec)
+
+mysql> select *From Department' at line 1
+mysql> +--------+------------+-------+
+    -> | DeptNo | DName      | LCode |
+    -> +--------+------------+-------+
+    -> |     10 | Accounting |   122 |
+    -> |     20 | Research   |   124 |
+    -> |     22 | Finance    |   122 |
+    -> |     23 | Sales      |   122 |
+    -> |     24 | HR         |   122 |
+    -> |     30 | Sales      |   123 |
+    -> |     40 | Operations |   167 |
+    -> +--------+------------+-------+
+    -> 7 rows in set (0.00 sec)
+    ->
+    -> mysql> CREATE TABLE Employee (
+    ->     ->     EmpNo INT(3) PRIMARY KEY,           -- Employee number
+    ->     ->     EName VARCHAR(35) NOT NULL,         -- Employee name
+    ->     ->     jCode INT(3),                       -- Job code, foreign key
+    ->     ->     MgrNo INT(3),                       -- Manager number, self-referencing foreign key
+    ->     ->     HireDate DATE,                     -- Hire date
+    ->     ->     Salary INT(10),                    -- Salary
+    ->     ->     Commission FLOAT(11,2),            -- Commission
+    ->     ->     DeptNo INT(3),                     -- Department number, foreign key
+    ->     ->     FOREIGN KEY (jCode) REFERENCES job(jCode),
+    ->     ->     FOREIGN KEY (MgrNo) REFERENCES Employee(EmpNo),
+    ->     ->     FOREIGN KEY (DeptNo) REFERENCES Department(DeptNo)
+    ->     -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '+--------+------------+-------+
+| DeptNo | DName      | LCode |
++--------+------' at line 1
+mysql> Query OK, 0 rows affected, 6 warnings (1.21 sec)
+    ->
+    -> mysql> INSERT INTO Employee (EmpNo, EName, jCode, MgrNo, HireDate, Salary, Commission, DeptNo) VALUES
+    ->     -> (1, 'venkat', 672, NULL, '2006-02-01', 1200000, 10000, 40),
+    ->     -> (2, 'Nirmala', 671, 1, '2007-04-02', 800000, 50000, 20),
+    ->     -> (3, 'Pradeep', 669, 1, '2005-10-10', 1000000, NULL, 40),
+    ->     -> (4, 'Srinivas', 669, 1, '2005-05-08', 1000000, NULL, 30),
+    ->     -> (5, 'Krishna', 668, 2, '2005-10-09', 500000, 20000, 22),
+    ->     -> (6, 'Deepa', 668, 3, '2007-09-09', 600000, NULL, 23),
+    ->     -> (7, 'Keerthi', 668, 4, '2006-06-05', 600000, NULL, 24);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Query OK, 0 rows affected, 6 warnings (1.21 sec)
+
+mysql> INSERT INTO Employee (E' at line 1
+mysql> ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`org`.`employee`, CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`jCode`) REFERENCES `job` (`JCode`))
+    -> mysql> (3, 'Pradeep', 669, 1, '2005-10-10', 1000000, NULL, 40),^C
+mysql> ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`org`.`employee`, CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`jCode`) REFERENCES `job` (`JCode`))INSERT INTO job (JCode, JName) VALUES (672, 'NewJobTitle');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint f' at line 1
+mysql> INSERT INTO job (JCode, JName) VALUES (672, 'NewJobTitle');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO Employee (EmpNo, EName, jCode, MgrNo, HireDate, Salary, Commission, DeptNo) VALUES
+    -> (1, 'venkat', 670, NULL, '2006-02-01', 1200000, 10000, 40),
+    -> (2, 'Nirmala', 671, 1, '2007-04-02', 800000, 50000, 20),
+    -> (3, 'Pradeep', 669, 1, '2005-10-10', 1000000, NULL, 40),
+    -> (4, 'Srinivas', 669, 1, '2005-05-08', 1000000, NULL, 30),
+    -> (5, 'Krishna', 668, 2, '2005-10-09', 500000, 20000, 22),
+    -> (6, 'Deepa', 668, 3, '2007-09-09', 600000, NULL, 23),
+    -> (7, 'Keerthi', 668, 4, '2006-06-05', 600000, NULL, 24);
+Query OK, 7 rows affected (0.04 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> select *From Employee;
++-------+----------+-------+-------+------------+---------+------------+--------+
+| EmpNo | EName    | jCode | MgrNo | HireDate   | Salary  | Commission | DeptNo |
++-------+----------+-------+-------+------------+---------+------------+--------+
+|     1 | venkat   |   670 |  NULL | 2006-02-01 | 1200000 |   10000.00 |     40 |
+|     2 | Nirmala  |   671 |     1 | 2007-04-02 |  800000 |   50000.00 |     20 |
+|     3 | Pradeep  |   669 |     1 | 2005-10-10 | 1000000 |       NULL |     40 |
+|     4 | Srinivas |   669 |     1 | 2005-05-08 | 1000000 |       NULL |     30 |
+|     5 | Krishna  |   668 |     2 | 2005-10-09 |  500000 |   20000.00 |     22 |
+|     6 | Deepa    |   668 |     3 | 2007-09-09 |  600000 |       NULL |     23 |
+|     7 | Keerthi  |   668 |     4 | 2006-06-05 |  600000 |       NULL |     24 |
++-------+----------+-------+-------+------------+---------+------------+--------+
+7 rows in set (0.00 sec)
+
+mysql> UPDATE Employee
+    -> SET DeptNo = 60
+    -> WHERE DeptNo = 30;
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`org`.`employee`, CONSTRAINT `employee_ibfk_3` FOREIGN KEY (`DeptNo`) REFERENCES `department` (`DeptNo`))
+mysql> UPDATE Employee
+    -> SET DeptNo = 40
+    -> WHERE DeptNo = 60;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select *From Employee;
++-------+----------+-------+-------+------------+---------+------------+--------+
+| EmpNo | EName    | jCode | MgrNo | HireDate   | Salary  | Commission | DeptNo |
++-------+----------+-------+-------+------------+---------+------------+--------+
+|     1 | venkat   |   670 |  NULL | 2006-02-01 | 1200000 |   10000.00 |     40 |
+|     2 | Nirmala  |   671 |     1 | 2007-04-02 |  800000 |   50000.00 |     20 |
+|     3 | Pradeep  |   669 |     1 | 2005-10-10 | 1000000 |       NULL |     40 |
+|     4 | Srinivas |   669 |     1 | 2005-05-08 | 1000000 |       NULL |     30 |
+|     5 | Krishna  |   668 |     2 | 2005-10-09 |  500000 |   20000.00 |     22 |
+|     6 | Deepa    |   668 |     3 | 2007-09-09 |  600000 |       NULL |     23 |
+|     7 | Keerthi  |   668 |     4 | 2006-06-05 |  600000 |       NULL |     24 |
++-------+----------+-------+-------+------------+---------+------------+--------+
+7 rows in set (0.00 sec)
+
+mysql> UPDATE Employee
+    -> SET DeptNo = 60
+    -> WHERE Deptno = 40;
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`org`.`employee`, CONSTRAINT `employee_ibfk_3` FOREIGN KEY (`DeptNo`) REFERENCES `department` (`DeptNo`))
+mysql> UPDATE Venkat
+    -> SET DeptNo = 60
+    -> WHERE DeptNo = 40;
+ERROR 1146 (42S02): Table 'org.venkat' doesn't exist
+mysql> USE Employee;
+Database changed
+mysql> UPDATE Venkat
+    -> SET DeptNo = 60
+    -> WHERE DeptNo = 40;
+ERROR 1146 (42S02): Table 'employee.venkat' doesn't exist
+mysql>
+
+mysql> use org;
+Database changed
+mysql> show tables;
++---------------+
+| Tables_in_org |
++---------------+
+| department    |
+| employee      |
+| job           |
+| location      |
++---------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee;
++-------+----------+-------+-------+------------+---------+------------+--------+
+| EmpNo | EName    | jCode | MgrNo | HireDate   | Salary  | Commission | DeptNo |
++-------+----------+-------+-------+------------+---------+------------+--------+
+|     1 | venkat   |   670 |  NULL | 2006-02-01 | 1200000 |   10000.00 |     40 |
+|     2 | Nirmala  |   671 |     1 | 2007-04-02 |  800000 |   50000.00 |     20 |
+|     3 | Pradeep  |   669 |     1 | 2005-10-10 | 1000000 |       NULL |     40 |
+|     4 | Srinivas |   669 |     1 | 2005-05-08 | 1000000 |       NULL |     30 |
+|     5 | Krishna  |   668 |     2 | 2005-10-09 |  500000 |   20000.00 |     22 |
+|     6 | Deepa    |   668 |     3 | 2007-09-09 |  600000 |       NULL |     23 |
+|     7 | Keerthi  |   668 |     4 | 2006-06-05 |  600000 |       NULL |     24 |
++-------+----------+-------+-------+------------+---------+------------+--------+
+7 rows in set (0.00 sec)
+
+mysql>  select *From employee where jcode=669;
++-------+----------+-------+-------+------------+---------+------------+--------+
+| EmpNo | EName    | jCode | MgrNo | HireDate   | Salary  | Commission | DeptNo |
++-------+----------+-------+-------+------------+---------+------------+--------+
+|     3 | Pradeep  |   669 |     1 | 2005-10-10 | 1000000 |       NULL |     40 |
+|     4 | Srinivas |   669 |     1 | 2005-05-08 | 1000000 |       NULL |     30 |
++-------+----------+-------+-------+------------+---------+------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT *
+    -> FROM employee
+    -> WHERE join_date < '2007-01-01';
+ERROR 1054 (42S22): Unknown column 'join_date' in 'where clause'
+mysql> USE Employee;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> use employeee;
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_employeee |
++---------------------+
+| employee            |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> use employee;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| devops             |
+| employee           |
+| employeee          |
+| employeetable      |
+| information_schema |
+| mysql              |
+| org                |
+| performance_schema |
+| session            |
+| sys                |
+| teju               |
++--------------------+
+11 rows in set (0.00 sec)
+
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> use org;
+Database changed
+mysql> show tables;
++---------------+
+| Tables_in_org |
++---------------+
+| department    |
+| employee      |
+| job           |
+| location      |
++---------------+
+4 rows in set (0.00 sec)
+
+mysql> select *From employee;
++-------+----------+-------+-------+------------+---------+------------+--------+
+| EmpNo | EName    | jCode | MgrNo | HireDate   | Salary  | Commission | DeptNo |
++-------+----------+-------+-------+------------+---------+------------+--------+
+|     1 | venkat   |   670 |  NULL | 2006-02-01 | 1200000 |   10000.00 |     40 |
+|     2 | Nirmala  |   671 |     1 | 2007-04-02 |  800000 |   50000.00 |     20 |
+|     3 | Pradeep  |   669 |     1 | 2005-10-10 | 1000000 |       NULL |     40 |
+|     4 | Srinivas |   669 |     1 | 2005-05-08 | 1000000 |       NULL |     30 |
+|     5 | Krishna  |   668 |     2 | 2005-10-09 |  500000 |   20000.00 |     22 |
+|     6 | Deepa    |   668 |     3 | 2007-09-09 |  600000 |       NULL |     23 |
+|     7 | Keerthi  |   668 |     4 | 2006-06-05 |  600000 |       NULL |     24 |
++-------+----------+-------+-------+------------+---------+------------+--------+
+7 rows in set (0.00 sec)
+
+mysql> select *From employee where year
+    -> 9^C
+mysql> select *From employee where year(hiredate)<2007
+    -> ^C
+mysql> select *From employee where year(hiredate)<2007;
++-------+----------+-------+-------+------------+---------+------------+--------+
+| EmpNo | EName    | jCode | MgrNo | HireDate   | Salary  | Commission | DeptNo |
++-------+----------+-------+-------+------------+---------+------------+--------+
+|     1 | venkat   |   670 |  NULL | 2006-02-01 | 1200000 |   10000.00 |     40 |
+|     3 | Pradeep  |   669 |     1 | 2005-10-10 | 1000000 |       NULL |     40 |
+|     4 | Srinivas |   669 |     1 | 2005-05-08 | 1000000 |       NULL |     30 |
+|     5 | Krishna  |   668 |     2 | 2005-10-09 |  500000 |   20000.00 |     22 |
+|     7 | Keerthi  |   668 |     4 | 2006-06-05 |  600000 |       NULL |     24 |
++-------+----------+-------+-------+------------+---------+------------+--------+
+5 rows in set (0.04 sec)
+
+mysql>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
